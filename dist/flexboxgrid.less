@@ -1,0 +1,165 @@
+.row {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+.col.reverse {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+.col-xs, .col-sm, .col-md, .col-lg {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+.create(xs);
+
+@media only screen and (min-width:49em) {
+    .create(sm);
+}
+
+@media only screen and (min-width:64em) {
+    .create(md);
+}
+
+@media only screen and (min-width:75em) {
+    .create(lg);
+}
+
+.create(@prefix) {
+    .generate-col(@prefix);
+    .generate-lygrid-col(@prefix);
+    .generate-aux(@prefix);
+}
+
+.generate-col(@p, @n: 12, @i: 1) when (@i =< @n) {
+  .col-@{p}-@{i} {
+    -ms-flex-preferred-size: (@i * (100%/@n));
+    flex-basis: (@i * (100%/@n));
+    max-width: (@i * (100%/@n));
+
+    box-sizing: border-box;
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+  .generate-col-between(@p, @i, (100%/@n), 11);
+  .generate-col(@p, @n, (@i + 1));
+}
+
+.generate-col-between(@pref, @between, @tamanhocol, @qtdcol, @i: 1) when (@i < @qtdcol) {
+  .col-@{pref}-@{between}-@{i} {
+    -ms-flex-preferred-size: ((@between * @tamanhocol) + ((@tamanhocol / (@qtdcol - 1)) * @i));
+    flex-basis: ((@between * @tamanhocol) + ((@tamanhocol / (@qtdcol - 1)) * @i));
+    max-width: ((@between * @tamanhocol) + ((@tamanhocol / (@qtdcol - 1)) * @i));
+
+    box-sizing: border-box;
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+  .generate-col-between(@pref, @between, @tamanhocol, @qtdcol, (@i + 1));
+}
+
+.generate-lygrid-col(@p, @n: 100, @i: 1) when (@i =< @n) {
+  .col-p-@{p}-@{i} { 
+    -ms-flex-preferred-size: (@i * 1%);
+    flex-basis: (@i * 1%);
+    max-width: (@i * 1%);
+
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+  .generate-lygrid-col(@p, @n, (@i + 1));
+}
+
+.generate-aux(@p) {
+    .start-@{p} {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        text-align: start
+    }
+
+    .center-@{p} {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center
+    }
+
+    .end-@{p} {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        text-align: end
+    }
+
+    .top-@{p} {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start
+    }
+
+    .middle-@{p} {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .bottom-@{p} {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end
+    }
+
+    .around-@{p} {
+        -ms-flex-pack: distribute;
+        justify-content: space-around
+    }
+
+    .between-@{p} {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    .first-@{p} {
+        -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+        order: -1
+    }
+
+    .last-@{p} {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1
+    }
+}
