@@ -1,5 +1,3 @@
-# flexbox-grid
-
 <h1 align="center">Flexbox Grid</h1>
 
 <h5 align="center">Just another css framework for grid layout simplified but complete.</h5>
