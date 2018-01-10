@@ -1,5 +1,5 @@
 {
-  "name": "@flexbox-grid",
+  "name": "fr-flexbox-grid",
   "version": "0.0.0",
   "description": "Just another css framework for grid layout simplified but complete.",
   "main": "./dist/flexbox-grid.min.css",
