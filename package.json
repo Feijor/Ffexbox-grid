@@ -1,0 +1,19 @@
+{
+  "name": "@flexbox-grid",
+  "version": "0.0.0",
+  "description": "Just another css framework for grid layout simplified but complete.",
+  "main": "./dist/flexbox-grid.min.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Feijor/flexbox-grid.git"
+  },
+  "author": "Thiago Feijó Ramos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Feijor/flexbox-grid/issues"
+  },
+  "homepage": "https://github.com/Feijor/flexbox-grid"
+}
