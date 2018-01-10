@@ -2,6 +2,10 @@
 
 <h5 align="center">Just another css framework for grid layout simplified but complete.</h5>
 
+## Installation
+
+```npm install fr-flexbox-grid```
+
 ## Example
 
 You can work in two ways.
